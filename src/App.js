@@ -1,8 +1,11 @@
+import React, {useState}  from 'react';
 import './App.css';
 import Expenses from './components/Expenses/Expenses'
 import NewExpense from './components/NewExpense/NewExpense';
 
 const App = () => {
+  const [filteredYear, setFilteredYear] = useState('2024') 
+  
   const expenses = [
     {  
     date: new Date(2024, 10, 12),
@@ -24,7 +27,11 @@ const App = () => {
   return (
     <div className="App">
       <NewExpense onAddExpense={addExpenseHandler}/> 
-      <Expenses expenses={expenses}/> 
+      <Expenses 
+        expenses={expenses}
+        filteredYear={filteredYear} 
+        onChangeYear={setFilteredYear} 
+      /> 
     </div>
   );
 } 
