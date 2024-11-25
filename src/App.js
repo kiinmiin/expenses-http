@@ -1,22 +1,28 @@
-import React, {useState}  from 'react';
 import './App.css';
 import Expenses from './components/Expenses/Expenses'
 import NewExpense from './components/NewExpense/NewExpense';
 
-const App = () => {
-  const [filteredYear, setFilteredYear] = useState('2024') 
+const App = () => { 
   
-  const expenses = [
+  const DUMMY_EXPENSES = [
     {  
+    id: 'id1',
     date: new Date(2024, 10, 12),
     title: 'New book',
-    price: 30.99
+    amount: 30.99
     },
     {
+      id: 'id2',
       date: new Date(2024, 10, 12),
       title: 'New Jeans',
-      price: 99.99
-    }  
+      amount: 99.99
+    },
+    {
+      id: 'id3',
+      date: new Date(2024, 0 ,25),
+      title: 'New bag',
+      amount: 139.99
+    }   
   ]     
 
   const addExpenseHandler = (expense) => {
@@ -27,11 +33,7 @@ const App = () => {
   return (
     <div className="App">
       <NewExpense onAddExpense={addExpenseHandler}/> 
-      <Expenses 
-        expenses={expenses}
-        filteredYear={filteredYear} 
-        onChangeYear={setFilteredYear} 
-      /> 
+      <Expenses data={DUMMY_EXPENSES}/> 
     </div>
   );
 } 
