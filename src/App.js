@@ -6,13 +6,13 @@ import NewExpense from './components/NewExpense/NewExpense';
 const DUMMY_EXPENSES = [
   {  
   id: 'id1',
-  date: new Date(2024, 10, 12),
+  date: new Date(2023, 0, 19),
   title: 'New book',
   amount: 30.99
   },
   {
     id: 'id2',
-    date: new Date(2024, 10, 12),
+    date: new Date(2024, 0, 19),
     title: 'New Jeans',
     amount: 99.99
   },
@@ -26,6 +26,7 @@ const DUMMY_EXPENSES = [
 
 const App = () => { 
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES)
+  const [filteredYear, setFilteredYear] = useState('2024') 
 
   const addExpenseHandler = (expense) => {
     setExpenses((previousExpenses) => {
@@ -36,7 +37,11 @@ const App = () => {
   return (
     <div className="App">
       <NewExpense onAddExpense={addExpenseHandler}/> 
-      <Expenses data={expenses}/> 
+      <Expenses 
+        data={expenses}
+        filteredYear={filteredYear}
+        onChangeYear={setFilteredYear}   
+      /> 
     </div>
   );
 } 
