@@ -5,20 +5,20 @@ import './Expenses.css'
 import { useState } from "react";
 
 const Expenses = (props) => {
-    const [selectedYear, setSelectedYear] = useState('2023')  
+    const [filteredYear, setFilteredYear] = useState('2024')  
 
     const filterChangeHandler = (year) => {
       console.log("Selected year:", year)
-      setSelectedYear(year)  
+      setFilteredYear(year)  
     };
     
-    const filteredExpenses = props.data.filter((expense) => 
-      expense.date.getFullYear().toString() === selectedYear
-    );
+    const filteredExpenses = props.data.filter((expense) => { 
+      return new Date(expense.date).getFullYear() == filteredYear
+    });
 
     return (
       <Card className="expenses">
-        <ExpensesFilter selectedYear={selectedYear} onChangeFilter={filterChangeHandler}/>
+        <ExpensesFilter selectedYear={filteredYear} onChangeFilter={filterChangeHandler}/>
         <ExpensesList expenses={filteredExpenses}/>  
       </Card>
     );

@@ -31,8 +31,8 @@ const ExpenseForm = (props) => {
 
     const submitHandler = (event) => {
         const enteredTitle = titleInputRef.current.value
-        const enteredAmount = titleInputRef.current.value
-        const enteredDate = titleInputRef.current.value
+        const enteredAmount = amountInputRef.current.value
+        const enteredDate = dateInputRef.current.value
 
         console.log('form submitted(form closed)')
         event.preventDefault()
